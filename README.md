@@ -39,8 +39,12 @@ Once configured, opening the app triggers an automatic login in the background w
   - `"Alliance Login Failed: Invalid username or password"`
   - `"Alliance: Cannot reach portal (Check Wi-Fi)"`
 
+- **🔐 Hardware-Backed AES-256 Encryption**:
+  Credentials (username, password, and portal URL) are encrypted at rest using Android KeyStore-backed `EncryptedSharedPreferences` (AES-256 GCM) via Google Tink (`androidx.security:security-crypto`). Includes seamless one-time migration from legacy storage.
+
 - **⚙️ Setup Screen & Launcher App Shortcut**:
-  - **Initial Launch**: If credentials are not yet saved, the app opens a clean Jetpack Compose setup screen to input and test your Username/Client ID and Password.
+  - **Initial Launch**: If credentials are not yet saved, the app opens a clean Jetpack Compose setup screen to input and test your Username/Client ID, Password, and customizable Portal URL.
+  - **Custom Portal URL**: Fully editable (defaults to `http://10.254.254.57/0/up/`), easily adapted for custom subnets or alternative gateways.
   - **Subsequent Launches**: Tap app icon $\rightarrow$ Invisible auto-login $\rightarrow$ Toast $\rightarrow$ Auto-close.
   - **Change Credentials Anytime**: Long-press the app icon on your home screen and select **Settings** to open the setup screen.
 
@@ -53,6 +57,9 @@ Once configured, opening the app triggers an automatic login in the background w
 
 ```
 alliance_auto_login/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                         # Automated GitHub Actions CI workflow
 ├── app/
 │   ├── build.gradle.kts                   # App dependencies, compileSdk, minSdk
 │   └── src/
@@ -60,7 +67,7 @@ alliance_auto_login/
 │       │   ├── AndroidManifest.xml        # Permissions, headless activity & shortcut declaration
 │       │   ├── java/com/example/allianceautologin/
 │       │   │   ├── AllianceLoginClient.kt # Browser simulation engine (OkHttp + Coroutines)
-│       │   │   ├── CredentialsStore.kt    # SharedPreferences credential persistence
+│       │   │   ├── CredentialsStore.kt    # Hardware-backed EncryptedSharedPreferences (AES-256 GCM)
 │       │   │   ├── MainActivity.kt        # Zero-UI headless launcher activity
 │       │   │   └── SetupActivity.kt       # Jetpack Compose settings interface
 │       │   └── res/
@@ -77,6 +84,7 @@ alliance_auto_login/
 ├── build.gradle.kts                       # Root build configuration
 ├── settings.gradle.kts                    # Project settings
 ├── .gitignore                             # Android & Gradle gitignore
+├── SECURITY.md                            # Security and privacy policy
 ├── LICENSE                                # MIT License
 └── README.md
 ```
@@ -86,6 +94,7 @@ alliance_auto_login/
 ## 🛠️ Tech Stack
 
 - **Language**: Kotlin 2.3.20
+- **Security & Cryptography**: AndroidX Security Crypto 1.1.0 (AES-256 GCM, MasterKey)
 - **Networking**: OkHttp 4.12.0
 - **Asynchronous Execution**: Kotlin Coroutines (`Dispatchers.IO`)
 - **UI (Settings Screen)**: Jetpack Compose + Material 3
@@ -148,12 +157,18 @@ app/build/outputs/apk/release/app-release.apk
 
 ## 📱 Installation & Usage
 
+### 📦 Pre-Built Release APK
+A signed production release APK is pre-compiled and ready in the repository root:
+- **File**: [`alliance_auto_login_release.apk`](alliance_auto_login_release.apk)
+- **Signature Schemes**: Scheme v2 & v3 (Valid & Active)
+- **SHA-256 Checksum**: `c5d4e7f8c78ecf88210ebf3f4c0677223241e7051033c1f165f29acfbc54d35f`
+
 ### Installing via ADB
 With an Android device or emulator connected via USB/Wi-Fi:
 ```bash
-adb install -r app/build/outputs/apk/debug/app-debug.apk
+adb install -r alliance_auto_login_release.apk
 ```
-*Alternatively, transfer `app-debug.apk` directly to your phone and tap to install.*
+*Alternatively, transfer `alliance_auto_login_release.apk` directly to your phone and tap to install.*
 
 ### First Time Setup
 1. Tap the **Alliance Auto Login** app icon.
@@ -190,6 +205,7 @@ Run all tests via:
 This application is built with security and privacy by design:
 - **Zero telemetry**: No analytics, no third-party trackers, and no external calls.
 - **Strictly local**: Communicates exclusively with the local gateway portal.
+- **Encrypted at rest**: Credentials are encrypted using hardware-backed AES-256 GCM via `EncryptedSharedPreferences`.
 - For full details, see our [Security Policy](SECURITY.md).
 
 ---
