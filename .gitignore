@@ -40,17 +40,17 @@ captures/
 # IntelliJ IDEA / Android Studio
 *.iml
 .idea/
-.idea/caches/
-.idea/libraries/
-.idea/modules.xml
-.idea/workspace.xml
-.idea/navEditor.xml
-.idea/assetWizardSettings.xml
 
-# Keystore files
+# Alternative editors
+.vscode/
+
+# Keystore & secret files
 *.jks
 *.keystore
 keystore.properties
+secrets.properties
+signing.properties
+*.pepk
 
 # External native build folder
 .externalNativeBuild
@@ -70,3 +70,11 @@ Thumbs.db
 
 # Kotlin compiler cache
 .kotlin/
+
+# JVM crash logs & temporary files
+hs_err_pid*
+replay_pid*
+*.tmp
+*.bak
+*.swp
+*~
