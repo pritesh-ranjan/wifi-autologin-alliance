@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Alliance Auto Login</string>
+    <string name="shortcut_settings_short">Settings</string>
+    <string name="shortcut_settings_long">Configure Login Credentials</string>
+</resources>
