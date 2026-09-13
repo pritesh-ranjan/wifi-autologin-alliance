@@ -121,6 +121,28 @@ The compiled APK will be located at:
 app/build/outputs/apk/debug/app-debug.apk
 ```
 
+### 4. Build a Signed Release APK (For Distribution)
+To generate a production release APK that won't be flagged as a debug/test app:
+1. Generate a release keystore (or use an existing one):
+   ```bash
+   keytool -genkeypair -v -keystore release.jks -alias alliance-key -keyalg RSA -keysize 2048 -validity 10000
+   ```
+2. Create `keystore.properties` from `keystore.properties.example`:
+   ```properties
+   storeFile=release.jks
+   storePassword=your_keystore_password
+   keyAlias=alliance-key
+   keyPassword=your_key_password
+   ```
+3. Run the release build:
+   ```bash
+   ./gradlew assembleRelease
+   ```
+The signed release APK will be located at:
+```
+app/build/outputs/apk/release/app-release.apk
+```
+
 ---
 
 ## 📱 Installation & Usage
