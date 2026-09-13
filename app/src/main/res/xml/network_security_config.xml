@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <base-config cleartextTrafficPermitted="true" />
+    <!-- Enforce secure HTTPS by default for all external network communication -->
+    <base-config cleartextTrafficPermitted="false" />
+
+    <!-- Whitelist cleartext HTTP strictly for the local Alliance Broadband portal IPs -->
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">10.254.254.57</domain>
         <domain includeSubdomains="true">10.254.254.53</domain>
