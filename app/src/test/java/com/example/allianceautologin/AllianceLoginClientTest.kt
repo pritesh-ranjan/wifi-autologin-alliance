@@ -12,14 +12,14 @@ class AllianceLoginClientTest {
         <body>
         <div class="username">
         <p>Welcome, 
-        <p>PRITESH RANJAN
+        <p>JOHN DOE
         <form method=post><br>
         <input class="ask3" type=submit name=logout value="Click here to logout" style="font-face: verdana; font-size: 14px">
         </form>
         </div>
         <table id="thesmalltable">
-            <tr><td width="100"><p><span>Name:</span></p></td><td>PRITESH RANJAN</td></tr>
-            <tr><td><p><span>CLIENT ID:</span></p></td><td>13012147108</td></tr>
+            <tr><td width="100"><p><span>Name:</span></p></td><td>JOHN DOE</td></tr>
+            <tr><td><p><span>CLIENT ID:</span></p></td><td>12345678901</td></tr>
             <tr><td><p><span>Package:</span></p></td><td>STARTER</td></tr>
         </table>
         Account status: Active
@@ -55,7 +55,7 @@ class AllianceLoginClientTest {
     @Test
     fun testExtractClientName_fromRealAllianceHtml() {
         val name = AllianceLoginClient.extractClientName(loggedInHtmlSample)
-        assertEquals("PRITESH RANJAN", name)
+        assertEquals("JOHN DOE", name)
     }
 
     @Test

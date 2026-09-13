@@ -3,6 +3,7 @@
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.3.20-7F52FF.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 [![Android](https://img.shields.io/badge/Platform-Android%207.0%2B%20(API%2024%2B)-3DDC84.svg?style=flat&logo=android)](https://developer.android.com)
 [![Gradle](https://img.shields.io/badge/Gradle-9.1.0-02303A.svg?style=flat&logo=gradle)](https://gradle.org)
+[![Android CI](https://github.com/pritesh-ranjan/wifi-autologin-alliance/actions/workflows/ci.yml/badge.svg)](https://github.com/pritesh-ranjan/wifi-autologin-alliance/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 An ultra-fast, lightweight Android application designed to authenticate with the **Alliance Broadband** captive portal (`http://10.254.254.57/0/up/`).
@@ -103,8 +104,8 @@ alliance_auto_login/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/alliance_auto_login.git
-cd alliance_auto_login
+git clone https://github.com/pritesh-ranjan/wifi-autologin-alliance.git
+cd wifi-autologin-alliance
 ```
 
 ### 2. Run Automated Unit Tests
@@ -181,6 +182,15 @@ Run all tests via:
 ```bash
 ./gradlew test
 ```
+
+---
+
+## 🔒 Security & Privacy
+
+This application is built with security and privacy by design:
+- **Zero telemetry**: No analytics, no third-party trackers, and no external calls.
+- **Strictly local**: Communicates exclusively with the local gateway portal.
+- For full details, see our [Security Policy](SECURITY.md).
 
 ---
 

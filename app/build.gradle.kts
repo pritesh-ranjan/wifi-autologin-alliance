@@ -80,6 +80,7 @@ dependencies {
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.activity.compose)
+  implementation(libs.androidx.security.crypto)
   // Networking and Coroutines
   implementation(libs.okhttp)
   implementation(libs.kotlinx.coroutines.android)
