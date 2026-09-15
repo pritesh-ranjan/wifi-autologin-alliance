@@ -121,7 +121,7 @@ fun SetupScreen(
                     value = username,
                     onValueChange = { username = it },
                     label = { Text("Client ID / Username") },
-                    placeholder = { Text("e.g. 13012147108") },
+                    placeholder = { Text("e.g. 12345678901") },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
